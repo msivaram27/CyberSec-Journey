@@ -1,0 +1,89 @@
+Sure! Here's the theory document with normal headers and without the table formatting:
+
+Firewall Rules Simulation: Theory Document
+
+1. Introduction to Firewalls
+
+A firewall is a security system that monitors and controls incoming and outgoing network traffic based on predefined security rules. It acts as a barrier between a trusted internal network and an untrusted external network, such as the internet. Firewalls are crucial for preventing unauthorized access and protecting networked systems from malicious threats.
+
+Firewalls can be categorized into:
+
+- **Packet Filtering Firewalls**: Inspect packets based on rules and either allow or block them.
+- **Stateful Inspection Firewalls**: Keep track of active connections and decide packet forwarding based on connection state.
+- **Proxy Firewalls**: Act as intermediaries between users and services.
+- **Next-Generation Firewalls (NGFWs)**: Include features like intrusion prevention, deep packet inspection, and malware filtering.
+
+2. How Firewall Rules Work
+
+Firewall rules define what network traffic is permitted or denied. These rules are typically based on the following parameters:
+
+- **Source IP Address**: The IP address where the packet originates.
+- **Destination IP Address**: The IP address where the packet is headed.
+- **Port Number**: The specific network service (e.g., HTTP on port 80, HTTPS on port 443).
+- **Protocol**: The communication protocol (e.g., TCP, UDP, ICMP).
+- **Action**: The decision to **ALLOW** or **DENY** the packet.
+
+Example firewall rules:
+
+- ALLOW packets from `192.168.1.1` to `ANY` on port `80` using protocol `TCP`.
+- DENY packets going to `8.8.8.8` (Google DNS) from `ANY`.
+
+3. Purpose of the Firewall Rules Simulation Program
+
+The purpose of this **firewall rules simulation program** is to demonstrate how a firewall applies rules to network packets. The program:
+
+1. Allows users to define custom firewall rules.
+2. Generates **random network packets** with different source/destination IPs, ports, and protocols.
+3. Allows users to **manually input packets** to test the firewall rules.
+4. Checks whether a packet is allowed or denied based on the user-defined rules.
+5. Displays results dynamically in a **Graphical User Interface (GUI)**.
+
+4. Implementation Details
+
+4.1 Components of the Program
+
+- **Packet Class**: Represents a network packet with properties like source IP, destination IP, port, and protocol.
+- **Firewall Rule Class**: Defines rules and checks if a packet matches a rule.
+- **Random Packet Generation**: Generates random packets with different attributes.
+- **Firewall Rule Application**: Evaluates packets against firewall rules to determine whether they should be allowed or denied.
+- **Graphical User Interface (GUI)**: Built using **Tkinter**, allowing users to input rules and packets.
+
+4.2 Features of the Program
+
+- **Manual Packet Entry**: Users can enter a packet's details and check if it's allowed or denied.
+- **Random Packet Simulation**: Automatically generates packets at regular intervals to test firewall rules.
+- **Dynamic Firewall Rule Addition**: Users can add new rules through the GUI.
+- **Real-time Output Display**: The program logs decisions for every packet processed.
+
+5. How the Program Works
+
+1. The program starts with a **set of default firewall rules**.
+2. Users can **add custom rules** through text fields in the GUI.
+3. Packets are either **randomly generated** or **manually entered** by the user.
+4. Each packet is checked against the firewall rules.
+5. If a matching rule is found, the packet is **allowed** or **denied** based on the rule's action.
+6. If no rule matches, the packet is **denied by default**.
+7. Results are displayed in real-time in the **GUI output log**.
+
+6. Example Scenario
+
+6.1 Example Firewall Rules
+
+- Rule 1: Source IP: `192.168.0.1`, Destination IP: `ANY`, Port: `80`, Protocol: `TCP`, Action: ALLOW
+- Rule 2: Source IP: `ANY`, Destination IP: `8.8.8.8`, Port: `ANY`, Protocol: `ANY`, Action: DENY
+- Rule 3: Source IP: `ANY`, Destination IP: `ANY`, Port: `22`, Protocol: `TCP`, Action: ALLOW
+
+6.2 Example Packet Processing
+
+- **Packet 1**: `{'source_ip': '192.168.0.1', 'dest_ip': '192.168.0.2', 'port': 80, 'protocol': 'TCP'}`  
+  Matches Rule #1 → **ALLOWED**
+
+- **Packet 2**: `{'source_ip': '10.0.0.1', 'dest_ip': '8.8.8.8', 'port': 53, 'protocol': 'UDP'}`  
+  Matches Rule #2 → **DENIED**
+
+- **Packet 3**: `{'source_ip': '172.16.0.1', 'dest_ip': '192.168.0.2', 'port': 22, 'protocol': 'TCP'}`  
+  Matches Rule #3 → **ALLOWED**
+
+7. Conclusion
+
+This project provides a hands-on demonstration of how firewalls operate and apply rules to network traffic. By allowing users to define rules and test packets, it offers insight into network security mechanisms used in **real-world firewall applications**. This simulation is a foundation for more advanced **cybersecurity projects**, such as **stateful firewalls, intrusion detection systems (IDS), and network security automation**.
