@@ -1,0 +1,86 @@
+RSA Algorithm: Theory and Explanation
+1. Introduction to RSA Algorithm
+The RSA (Rivest-Shamir-Adleman) algorithm is one of the most widely used public-key cryptographic algorithms. It is based on the mathematical principles of number theory and is used for secure data transmission, digital signatures, and authentication. The security of RSA relies on the difficulty of factoring large prime numbers, making it a fundamental technique in modern cryptography.
+
+Key Features of RSA:
+
+It is an asymmetric encryption algorithm, meaning it uses two keys:
+A public key for encryption.
+A private key for decryption.
+RSA is based on modular arithmetic and prime factorization.
+It ensures confidentiality, integrity, and authentication in communications.
+Used in SSL/TLS, PGP encryption, digital signatures, and secure email.
+2. Mathematical Foundation of RSA
+Step 1: Choosing Two Large Prime Numbers
+RSA encryption starts with selecting two large prime numbers, say p and q. These numbers should be sufficiently large (at least 1024-bit or 2048-bit) to ensure security.
+
+Step 2: Compute the Modulus (n)
+The modulus n is computed as:
+n = p × q
+The number n is used in both the public key and the private key.
+
+Step 3: Compute Euler’s Totient Function (φ(n))
+Euler’s Totient Function φ(n) is calculated as:
+φ(n) = (p − 1) × (q − 1)
+This function is used to determine a suitable public key exponent.
+
+Step 4: Select Public Key Exponent (e)
+Choose a number e such that:
+1 < e < φ(n)
+e is co-prime with φ(n) (i.e., gcd(e, φ(n)) = 1).
+A common choice for e is 65537 because it provides a good balance between security and performance.
+
+Step 5: Compute the Private Key (d)
+The private key exponent d is the modular multiplicative inverse of e modulo φ(n), meaning:
+d × e ≡ 1 (mod φ(n))
+This can be computed using the Extended Euclidean Algorithm.
+
+3. RSA Key Generation Example (Small Numbers for Understanding)
+Let’s assume:
+
+p = 61
+q = 53
+Compute:
+n = 61 × 53 = 3233
+Compute:
+φ(n) = (61 − 1) × (53 − 1) = 3120
+Choose:
+e = 17 (since gcd(17, 3120) = 1)
+Compute d using the modular inverse of 17 mod 3120, which gives d = 2753.
+Thus, our RSA key pair is:
+
+Public Key (e, n) = (17, 3233)
+Private Key (d, n) = (2753, 3233)
+4. RSA Encryption Process
+To encrypt a plaintext message M, we use the public key (e, n) and apply:
+C = M^e mod n
+Where C is the ciphertext.
+
+For example, encrypting M = 65:
+C = 65^17 mod 3233 = 2790
+So, the encrypted message is 2790.
+
+5. RSA Decryption Process
+To decrypt the ciphertext C, we use the private key (d, n) and apply:
+M = C^d mod n
+For example, decrypting C = 2790:
+M = 2790^2753 mod 3233 = 65
+So, the original message 65 is recovered.
+
+6. RSA Security and Strength
+Why is RSA Secure?
+
+Prime Factorization Hardness: Given n, it is computationally infeasible to factor it into p and q if they are large (2048-bit primes).
+Modular Arithmetic: Computing d from e without knowing φ(n) is infeasible.
+Attacks on RSA:
+
+Brute Force Attack: Not practical for large key sizes.
+Mathematical Attacks: Factoring n can break RSA, but with 2048-bit keys, it is computationally infeasible.
+Timing Attacks: If implementations are weak, an attacker can exploit the time taken for decryption.
+7. Real-World Applications of RSA
+SSL/TLS Encryption: RSA is used to encrypt HTTPS communication.
+Digital Signatures: Used in electronic document verification.
+Secure Email (PGP): Encrypts emails and ensures confidentiality.
+Blockchain & Cryptocurrencies: Used in transaction verification.
+Conclusion
+RSA is a powerful cryptographic algorithm that ensures secure communication. Its security is based on the difficulty of factoring large prime numbers, and it is widely used in internet security, digital signatures, and encryption protocols
