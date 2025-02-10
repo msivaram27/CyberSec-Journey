@@ -1,0 +1,41 @@
+Description of the Program
+This Python program serves as a Network Port Scanner with a Graphical User Interface (GUI) built using the Tkinter library. It is designed to scan a specific range of IP addresses to check if the hosts are active and identify open ports. The key features and functionality of the program are as follows:
+
+1. Host Discovery:
+The program first pings each IP address within the specified range to check if the host is active. The host is considered active if it responds to the ICMP Echo Request (ping). This is achieved using the subprocess module to run the ping command in Windows.
+
+2. Port Scanning:
+Once an active host is identified, the program proceeds to scan a set of common ports. These ports include:
+
+22 for SSH (Secure Shell)
+80 for HTTP (Hypertext Transfer Protocol)
+443 for HTTPS (Hypertext Transfer Protocol Secure)
+21 for FTP (File Transfer Protocol)
+53 for DNS (Domain Name System)
+25 for SMTP (Simple Mail Transfer Protocol)
+110 for POP3 (Post Office Protocol)
+8080 for HTTP alternate port
+The program checks if these ports are open by attempting to establish a TCP connection to each port. If the connection is successful, the port is considered open.
+
+3. IP Range Input:
+The program allows users to input a range of IP addresses (e.g., 10.123.53.84-100). The program parses this range, scans the specified IPs, and checks each for its status (UP or DOWN). The program automatically generates IP addresses by iterating through the range of the last octet, based on the starting IP address and the ending IP address.
+
+4. Graphical User Interface (GUI):
+The GUI is implemented using Tkinter, allowing users to:
+
+Input the desired IP range in the format xxx.xxx.xxx.xxx-xxx (e.g., 10.123.53.84-100).
+Click a "Start Scan" button to begin the scanning process.
+View the results of the scan in a scrollable text area, which shows the status of each IP address (either UP or DOWN) and lists any open ports for active hosts.
+5. Error Handling:
+The program includes error handling to manage invalid inputs, such as incorrect IP range formats. In such cases, the user is notified with an error message, and a debug statement is printed to the console for easier troubleshooting.
+
+6. Additional Features:
+The program provides useful debug information to the console, indicating when pings or port scans are attempted and when errors occur.
+Users can view detailed scan results through the scrollable text area, allowing easy identification of active hosts and open ports.
+7. Technologies Used:
+Python: The primary programming language.
+Tkinter: For building the GUI interface.
+subprocess: To run the ping command and check host availability.
+socket: For scanning ports on each active host.
+Conclusion:
+The Network Port Scanner program is a simple yet effective tool for network administrators and security professionals. It helps identify live hosts within a given IP range and checks common ports for vulnerabilities. By integrating the scanning functionality with a GUI, the tool becomes accessible to both technical and non-technical users
